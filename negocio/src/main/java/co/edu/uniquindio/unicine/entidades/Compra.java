@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Compra implements Serializable {
 
@@ -26,12 +27,14 @@ public class Compra implements Serializable {
     @OneToOne
     private Cupon cupon;
 
+    @ToString.Exclude
     @ManyToOne
     private HorarioPelicula horarioPelicula;
 
     @ManyToOne
     private Cliente cliente;
 
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(name = "compra_entrada",
             joinColumns = @JoinColumn(name = "compra_codigo"),

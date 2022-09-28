@@ -51,7 +51,7 @@ insert into confiteria values (15 , "PAPAS", "Rizadas mayonesa", 6000, 6);
 /* Cupon : codigo, descuento, estado, vencimiento, clienteCodigo, */
 insert into cupon values (100, 20, false, null, 2222);
 insert into cupon values (200, 20, false, null, 3333);
-insert into cupon values (300, 20, false, null, 5555);
+insert into cupon values (300, 20, false, null, 2222);
 
 /*Horario : codigo, anio, dia, hora, mes*/
 insert into horario values (1,"2022" , "11" , "7:30" , "10");

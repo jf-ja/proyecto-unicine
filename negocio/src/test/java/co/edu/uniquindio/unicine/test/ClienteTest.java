@@ -1,6 +1,8 @@
 package co.edu.uniquindio.unicine.test;
 
 import co.edu.uniquindio.unicine.entidades.Cliente;
+import co.edu.uniquindio.unicine.entidades.Compra;
+import co.edu.uniquindio.unicine.entidades.Cupon;
 import co.edu.uniquindio.unicine.repositorios.ClienteRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.jdbc.Sql;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -100,4 +103,48 @@ public class ClienteTest {
         List<Cliente> clientes = clienteRepo.obtenerClientesPorEstadoR(false, PageRequest.of(0, 2 , Sort.by("nombre")));
         clientes.forEach(System.out::println);
     }
+
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerCompraPorCorreoClienteT(){
+        List<Compra> compras = clienteRepo.obtenerCompraPorCorreoClienteR("cliente1@gmail.com");
+        for (Compra compra: compras ) {
+            System.out.println(compra.getCodigoCompra());
+        };
+
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerCompraPorCorreoCliente2T(){
+        List<Compra> compras = clienteRepo.obtenerCompraPorCorreoCliente2R("cliente1@gmail.com");
+        for (Compra compra: compras ) {
+            System.out.println(compra.getCodigoCompra());
+        };
+
+    }
+
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerCompraPorCorreoCliente3T(){
+        List<Compra> compras = clienteRepo.obtenerCompraPorCorreoCliente3R("cliente1@gmail.com");
+        for (Compra compra: compras ) {
+            System.out.println(compra.getCodigoCompra());
+        };
+
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerCuponesPorCodigoClienteT(){
+
+        List<Cupon> cupones = clienteRepo.obtenerCuponesPorCodigoClienteR(2222);
+        for (Cupon cupon: cupones) {
+            System.out.println(cupon.getCodigo());
+        }
+    }
+
+
 }
