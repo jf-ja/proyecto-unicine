@@ -146,5 +146,11 @@ public class ClienteTest {
         }
     }
 
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerClientePorNombreT() {
+        Cliente cliente = clienteRepo.obtenerClientePorNombreR("Camila");
+        System.out.println(cliente);
+    }
 
 }
